@@ -40,7 +40,7 @@ Plugin.define "Drupal" do
     # Matches #
     matches [
              
-             {:regexp=>/<script type="text\/javascript" src="[^\"]*\/misc\/drupal.js[^\"]*"><\/script>/},
+             {:regexp=>/src="[^\"]*\/misc\/drupal.js[^\"]*"/},
              {:regexp=>/<[^>]+alt="Powered by Drupal, an open source content management system"/},
              {:regexp=>/@import "[^\"]*\/misc\/drupal.css"/},
              {:text=>'jQuery.extend(Drupal.settings,'},
@@ -1562,6 +1562,8 @@ Plugin.define "Drupal" do
     v = Version.new("Drupal", versions, @base_uri)
     
     version = v.matches_format
+    
+    # Match 
     
     # Return version matches from md5 hashes, if present                                                         
     unless version.empty?
